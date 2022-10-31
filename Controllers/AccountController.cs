@@ -41,7 +41,7 @@ namespace WebApp.Controllers
                     Email = data.Employee.Email,
                     Role = data.Role.Name
                 };
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home", responseLogin);
             }
             return View();
         }
@@ -89,32 +89,19 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult ChangePassword(string email, string password, string confirm)
+        public IActionResult ChangePassword(string email, string currentPassword, string newPassword)
         {
-            var data = myContext.Users
+            var data = myContext.Users 
                 .Include(x => x.Employee)
-                .Include(x => x.Role)
-                .AsNoTracking()
-                .SingleOrDefault(x => x.Employee.Email.Equals(email) && x.Password.Equals(password));
+                .SingleOrDefault(x => x.Employee.Email.Equals(email) && x.Password.Equals(currentPassword)); 
 
-            myContext.SaveChanges();
-            if (data != null)
-            {
-                User user = new User()
-                {
-                    Id = data.Id,
-                    Password = confirm,
-                    RoleId = data.RoleId,
-                };
+            data.Password = newPassword;
+            myContext.Entry(data).State= EntityState.Modified;
 
-                myContext.Entry(user).State = EntityState.Modified;
-                var resultUser = myContext.SaveChanges();
-                if (resultUser > 0)
-                {
-                    return RedirectToAction("Index", "Account");
-                }
-            }
+            var resultPassword = myContext.SaveChanges();
+            if (resultPassword > 0)
+                return RedirectToAction("Login", "Account");
+
             return View();
         }
 
@@ -125,36 +112,23 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public IActionResult ChangePassword(string email, string password)
+        [HttpPost]
+        public IActionResult ForgotPassword(string fullName, string email, string newPassword)
         {
+
             var data = myContext.Users
                 .Include(x => x.Employee)
-                .Include(x => x.Role)
-                .AsNoTracking()
-                .SingleOrDefault(x => x.Employee.Email.Equals(email) && x.Password.Equals(password));
+                .SingleOrDefault(x => x.Employee.Email.Equals(email) && x.Password.Equals(newPassword));
 
-            myContext.SaveChanges();
-            if (data != null)
-            {
-                User user = new User()
-                {
-                    Id = data.Id,
-                    Password = data.Password,
-                };
+            data.Password = newPassword;
+            myContext.Entry(data).State = EntityState.Modified;
+            var resultPassword = myContext.SaveChanges();
+            if (resultPassword > 0)
+                return RedirectToAction("Login", "Account");
 
-                myContext.Entry(user).State = EntityState.Modified;
-                var resultUser = myContext.SaveChanges();
-                if (resultUser > 0)
-                {
-                    return RedirectToAction("Index", "Account");
-                }
-            }
             return View();
         }
-
     }
-    
-
 }
     
 
