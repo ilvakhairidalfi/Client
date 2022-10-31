@@ -118,10 +118,11 @@ namespace WebApp.Controllers
 
             var data = myContext.Users
                 .Include(x => x.Employee)
-                .SingleOrDefault(x => x.Employee.Email.Equals(email) && x.Password.Equals(newPassword));
+                .SingleOrDefault(x => x.Employee.Email.Equals(email) && x.Employee.FullName.Equals(fullName));
 
             data.Password = newPassword;
             myContext.Entry(data).State = EntityState.Modified;
+
             var resultPassword = myContext.SaveChanges();
             if (resultPassword > 0)
                 return RedirectToAction("Login", "Account");
