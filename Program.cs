@@ -1,13 +1,21 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using WebApp.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MyContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection")));
 
-// Add services to the container.
+//Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(15);     // 15 minutes
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
@@ -25,6 +33,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

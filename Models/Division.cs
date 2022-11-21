@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebApp.Base;
 
 namespace _181022.Model
 {
-    public class Division
+    public class Division : BaseModel
     {
         public Division()
         {
@@ -20,9 +21,7 @@ namespace _181022.Model
         }
 
         [Key]
-
         public int Id { get; set; }
-
         public string Name { get; set; }
     }
 }

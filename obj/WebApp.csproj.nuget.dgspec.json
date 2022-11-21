@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\METRODATA ACADEMY\\MCC\\Visual Studio Code\\WebApp\\WebApp.csproj": {}
+    "D:\\METRODATA ACADEMY\\MCC\\Visual Studio\\WebApp\\WebApp.csproj": {}
   },
   "projects": {
-    "D:\\METRODATA ACADEMY\\MCC\\Visual Studio Code\\WebApp\\WebApp.csproj": {
+    "D:\\METRODATA ACADEMY\\MCC\\Visual Studio\\WebApp\\WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\METRODATA ACADEMY\\MCC\\Visual Studio Code\\WebApp\\WebApp.csproj",
+        "projectUniqueName": "D:\\METRODATA ACADEMY\\MCC\\Visual Studio\\WebApp\\WebApp.csproj",
         "projectName": "WebApp",
-        "projectPath": "D:\\METRODATA ACADEMY\\MCC\\Visual Studio Code\\WebApp\\WebApp.csproj",
+        "projectPath": "D:\\METRODATA ACADEMY\\MCC\\Visual Studio\\WebApp\\WebApp.csproj",
         "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "D:\\METRODATA ACADEMY\\MCC\\Visual Studio Code\\WebApp\\obj\\",
+        "outputPath": "D:\\METRODATA ACADEMY\\MCC\\Visual Studio\\WebApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "BCrypt.Net-Core": {
+              "target": "Package",
+              "version": "[1.6.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.10, )"

@@ -17,9 +17,24 @@ namespace WebApp.Controllers
         // GET ALL
         public IActionResult Index()
         {
-            var data = myContext.Divisions.ToList();    // mangiil constractor MyContext. Kalau mau pakai WHERE di ToList blh
-                                                        //  (context).(nama tabel).ToList (get all-nya)
-            return View(data);                          // data taro di dlem View utk di passing ke View. Lalu buat View
+            //var data = myContext.Divisions.ToList();    // mangiil constractor MyContext. Kalau mau pakai WHERE di ToList blh
+            //  (context).(nama tabel).ToList (get all-nya)
+
+            //var role = HttpContext.Session.GetString("Role");
+            //if (role == "Admin")   // session (stlh account ctr)
+            //{
+            //    var data = myContext.Divisions.ToList();
+            //    return View(data);
+            //}
+
+            //else if (role == null)
+            //{
+            //    return RedirectToAction("UnAuthorized", "ErrorPage");
+            //}
+            //return RedirectToAction("Forbidden", "ErrorPage");
+
+            //return View(data);                // data taro di dlem View utk di passing ke View. Lalu buat View
+            return View();
         }
 
         // GET BY ID
@@ -42,6 +57,8 @@ namespace WebApp.Controllers
 
         public IActionResult Create(Division division)
         {
+            division.CreatedBy = HttpContext.Session.GetString("FullName");
+            division.CreateDate = DateTime.Now.ToLocalTime();
             myContext.Divisions.Add(division);
             var result = myContext.SaveChanges();       // SaveChanges disini sama seperti return non query
             if (result > 0)

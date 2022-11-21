@@ -20,12 +20,14 @@ namespace WebApp.Controllers
         //get all
         public IActionResult Index()
         {
-            var data = myContext.Departements.ToList();
-            return View(data);
+            //var data = myContext.Departements.ToList(); /* >> ini akan masuk ke http client*/
+            //return View(data);
+            return View();
+
         }
 
         //get id
-        public IActionResult Details(int id)    // kalau get id/ detail pakai parameter yg akan di get
+        public IActionResult Details(int id, Departement departement)    // kalau get id/ detail pakai parameter yg akan di get
         {
             var data = myContext.Departements.Find(id);    // (context).(nama tabel).Find(id) (utk mencari id)
             return View(data);
@@ -61,8 +63,17 @@ namespace WebApp.Controllers
         // UPDATE - GET POST
         public IActionResult Edit(int id)
         {
-            var data = myContext.Departements.Find(id);
-            return View(data);
+            //var data = myContext.Departements.Find(id);
+            //return View(data);
+
+            var DropDown = new DepartementListVM();
+            DropDown.Divisions = myContext.Divisions.Select(s => new SelectListItem()
+            {
+                Value = s.Id.ToString(),
+                Text = s.Name
+            }).ToList();
+
+            return View(DropDown);
         }
 
         [HttpPost]
@@ -98,7 +109,9 @@ namespace WebApp.Controllers
             myContext.Departements.Remove(departement);
             var result = myContext.SaveChanges();
             if (result > 0)
-                return RedirectToAction("Index", "departement");
+            {
+                return RedirectToAction("Index", "Departement");
+            }
             return View();
         }
     }
