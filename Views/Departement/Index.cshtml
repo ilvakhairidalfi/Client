@@ -18,16 +18,17 @@
         <thead>
             <tr>
                 <th>No</th>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Division Id</th>
                 <th>Action</th>
             </th> 
         </thead>
-    
     </table>
         
 
     <!-- Modal -->
+    <!-- Create New -->
     <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -36,7 +37,8 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            create
+            <p>Name :</p><input type="text" class="form-control" id="nameDep">
+            <p>Division Id :</p><input type="text" class="form-control" id="idDiv">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -82,12 +84,12 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Details</h1>
+            <h3 class="modal-title fs-5" id="exampleModalLabel">Details</h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Details"></button>
           </div>
           <div class="modal-body">
-            
-            <div class="card" id="detailDepartement">
+              <div id="detailDepartement"></div>
+            @*<div class="card" id="detailDepartement">
                 <table id="tableDetails">
                     <thead>
                         <tr>
@@ -96,7 +98,7 @@
                         </th> 
                     </thead>
                 </table>
-            </div>
+            </div>*@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -114,19 +116,17 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Edit"></button>
           </div>
           <div class="modal-body">
-            <div class="card text-center" style="width: 20rem" id="editDepartement">
-                <h4>Departement</h4>
-                <div class="card-body">
-                    <table class="table" id="tableMVC">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>No</th>
-                                <th>Name</th>
-                                <th>Division Id</th>
-                            </th>
-                        </thead>
-                    </table>
-                </div>
+            <div id="editDepartement"></div>
+                    @*<div class="card" id="detailDepartement">
+                <table id="tableDetails">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Division Id</th>
+                        </th> 
+                    </thead>
+                </table>
+            </div>*@
             </div>
           </div>
           <div class="modal-footer">
