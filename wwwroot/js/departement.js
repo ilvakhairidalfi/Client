@@ -26,41 +26,52 @@
     });
 });
 
-//function tableDepartement(id) {
-//    $.ajax({
-//            url: 'https://localhost:7156/api/Departements/${id}',
-//            type: "GET"
-//    }).done((res) => {
-//        let temp = "";
-//        temp += `<input type="hidden" class="form-control" id="hideId" readonly placeholder="" value="0">
-//            <h5>id: <h5>input type="text" class="form-control" id="departId" placeholder="${res.data.id}" "value="${res.data.id}">
-//            <h5>name: <h5>input type="text" class="form-control" id="departName" placeholder="${res.data.name}" "value="${res.data.name}">
-//            `;
+function detailDepartement(id) {
+    $.ajax({
+            url: `https://localhost:7156/api/Departements/${id}`,
+            type: "GET"
+    }).done((res) => {
+        //console.log(res.results);
+        let temp = "";
+        temp += `
+                 <input type="hidden" class="form-control" id="hideId" readonly placeholder="" value="0">
+                 <h5><input type="text" id="depName" class="form-control" readonly placeholder="${res.data.Name}" value="${res.data.Name}">
+                 <h5><input type="text" id="divId" class="form-control" readonly placeholder="${res.data.DivisionID}" value="${res.data.DivisionID}"td>
+                 `;
+        })
+        // console.log(temp);
+        $("#detailDepartement").html(temp);
+    }).fail((err) => {
+        console.log(err);
+    });
+}
 
-//    })
-//});
+function deleteDepartement(id) {
+    $.ajax({
+        url: `https://localhost:7156/api/Departements/${id}`,
+        type: "DELETE"
+    });
+}
 
-//$(document).ready(function() {
-//    $('#tableDelete').DataTable({
-//        ajax: {
-//            url: 'https://localhost:7156/api/Departements/${id}',
-//            datasrc: '',
-//            type: "GET",
-//        },
-//        columns: [
-            
-//            { data: "name", },
-//            { data: "divisionId", }
-//        ]
-//    });
-//});
+function editlDepartement(id) {
+    $.ajax({
+        url: `https://localhost:7156/api/Departements/${id}`,
+        type: "GET"
+    }).done((res) => {
+        //console.log(res.results);
+        let temp = "";
+        temp += `
+                 <input type="hidden" class="form-control" id="hideId" readonly placeholder="" value="0">
+                 <h5><input type="text" id="depName" class="form-control" readonly placeholder="${res.data.Name}" value="${res.data.Name}">
+                 <h5><input type="text" id="divId" class="form-control" readonly placeholder="${res.data.DivisionID}" value="${res.data.DivisionID}"td>
+                 `;
+        })
+        // console.log(temp);
+    $("#editDepartement").html(temp);
+    }).fail((err) => {
+        console.log(err);
+    });
+}
 
-
-//function delete(id) {
-//    $.ajax({
-//        url: 'https://localhost:7156/api/Departements/${id}',
-//        type: "DELETE",
-//    });
-//}
 
 
