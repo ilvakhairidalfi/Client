@@ -2,7 +2,7 @@
     $('#tableDepartement').DataTable({
         ajax: {
             url: 'https://localhost:7156/api/Departements',
-            datasrc: '',
+            datasrc: 'data',
             type: "GET",
         },
         columns: [
@@ -18,15 +18,14 @@
             {
                 data: null,
                 render: function (data, type, row, meta) {
-                    return `<a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailsModal"
-                            onclick="detailDep('${data.id}')">Details</a> 
-                        <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"
-                            onclick="editDep('${data.id}')">Edit</a>
-                        <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal
-                            onclick="deleteDep('${data.id}')"">Delete</a>`;
+                    return `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailsModal" onclick="detailDep('${data.id}')">Details</button> 
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editDep('${data.id}')">Edit</button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal onclick="deleteDep('${data.id}')">Delete</button>`;
                 }
-            }
-        ]
+            },
+        ],
+        dom: 'Bfrtip',
+        butttons: [ 'colvis', 'excel', 'pdf'],
     });
 });
 
@@ -38,10 +37,10 @@ function detailDep(id) {
         //console.log(res.results);
         let temp = "";
         temp += `
-                <input type="hidden" class="form-control" id="hideId" readonly placeholder="" value="0">
-                <h5>Id : <h5><input type="text" id="depId" class="form-control" readonly placeholder="${res.data.Id}" value="${res.data.Id}">
-                <h5>Name : <h5><input type="text" id="depName" class="form-control" readonly placeholder="${res.data.Name}" value="${res.data.Name}">
-                <h5>Division Id : <h5><input type="text" id="divId" class="form-control" readonly placeholder="${res.data.DivisionId}" value="${res.data.DivisionId}">
+                <input type="hidden" class="form-control" id="hiddenId" readonly placeholder="" value="0">
+                <h6>Id          : <h6><input type="text" id="depId" class="form-control" readonly placeholder="${res.data.id}" value="${res.data.id}">
+                <h6>Name        : <h6><input type="text" id="depName" class="form-control" readonly placeholder="${res.data.name}" value="${res.data.name}">
+                <h6>Division Id : <h6><input type="text" id="divId" class="form-control" readonly placeholder="${res.data.divisionId}" value="${res.data.divisionId}">
                 `;
         // console.log(temp);
         $("#detailDepartement").html(temp);
@@ -53,7 +52,20 @@ function detailDep(id) {
 function deleteDep(id) {
     $.ajax({
         url: `https://localhost:7156/api/Departements/${id}`,
-        type: "DELETE"
+        method: "DELETE"
+    }).done((res) => {
+        //console.log(res.results);
+        let temp = "";
+        temp += `
+                <input type="hidden" class="form-control" id="hiddenId" readonly placeholder="" value="0">
+                <h6>Id          : <h6><input type="text" id="depId" class="form-control" readonly placeholder="${res.data.id}" value="${res.data.id}">
+                <h6>Name        : <h6><input type="text" id="depName" class="form-control" readonly placeholder="${res.data.name}" value="${res.data.name}">
+                <h6>Division Id : <h6><input type="text" id="divId" class="form-control" readonly placeholder="${res.data.divisionId}" value="${res.data.divisionId}">
+                `;
+        // console.log(temp);
+        $("#editDepartement").html(temp);
+    }).fail((err) => {
+        console.log(err);
     });
 }
 
@@ -65,13 +77,33 @@ function editDep(id) {
         //console.log(res.results);
         let temp = "";
         temp += `
-                 <input type="hidden" class="form-control" id="hideId" readonly placeholder="" value="0">
-                <h5>Id : <h5><input type="text" id="depId" class="form-control" readonly placeholder="${res.data.Id}" value="${res.data.Id}">
-                <h5>Name : <h5><input type="text" id="depName" class="form-control" readonly placeholder="${res.data.Name}" value="${res.data.Name}">
-                <h5>Division Id : <h5><input type="text" id="divId" class="form-control" readonly placeholder="${res.data.DivisionId}" value="${res.data.DivisionId}">
+                <input type="hidden" class="form-control" id="hiddenId" readonly placeholder="" value="0">
+                <h6>Id          : <h6><input type="text" id="depId" class="form-control" readonly placeholder="${res.data.id}" value="${res.data.id}">
+                <h6>Name        : <h6><input type="text" id="depName" class="form-control" placeholder="${res.data.name}" value="${res.data.name}">
+                <h6>Division Id : <h6><input type="text" id="divId" class="form-control" placeholder="${res.data.divisionId}" value="${res.data.divisionId}">
                 `;
         // console.log(temp);
     $("#editDepartement").html(temp);
+    }).fail((err) => {
+        console.log(err);
+    });
+}
+
+function createDep() {
+    $.ajax({
+        url: `https://localhost:7156/api/Departements/${id}`,
+        type: "CREATE"
+    }).done((res) => {
+        //console.log(res.results);
+        let temp = "";
+        temp += `
+                <input type="hidden" class="form-control" id="hiddenId" readonly placeholder="" value="0">
+                <h6>Id          : <h6><input type="text" id="depId" class="form-control" readonly placeholder="${res.data.id}" value="${res.data.id}">
+                <h6>Name        : <h6><input type="text" id="depName" class="form-control" placeholder="${res.data.name}" value="${res.data.name}">
+                <h6>Division Id : <h6><input type="text" id="divId" class="form-control" placeholder="${res.data.divisionId}" value="${res.data.divisionId}">
+                `;
+        // console.log(temp);
+        $("#editDepartement").html(temp);
     }).fail((err) => {
         console.log(err);
     });
