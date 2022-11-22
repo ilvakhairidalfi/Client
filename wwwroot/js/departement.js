@@ -52,20 +52,11 @@ function detailDep(id) {
 function deleteDep(id) {
     $.ajax({
         url: `https://localhost:7156/api/Departements/${id}`,
-        method: "DELETE"
-    }).done((res) => {
-        //console.log(res.results);
-        let temp = "";
-        temp += `
-                <input type="hidden" class="form-control" id="hiddenId" readonly placeholder="" value="0">
-                <h6>Id          : <h6><input type="text" id="depId" class="form-control" readonly placeholder="${res.data.id}" value="${res.data.id}">
-                <h6>Name        : <h6><input type="text" id="depName" class="form-control" readonly placeholder="${res.data.name}" value="${res.data.name}">
-                <h6>Division Id : <h6><input type="text" id="divId" class="form-control" readonly placeholder="${res.data.divisionId}" value="${res.data.divisionId}">
-                `;
-        // console.log(temp);
-        $("#deleteDepartement").html(temp);
-    }).fail((err) => {
-        console.log(err);
+        method: "DELETE",
+
+        success: function (data) {
+            console.log('deleted');
+        }
     });
 }
 
