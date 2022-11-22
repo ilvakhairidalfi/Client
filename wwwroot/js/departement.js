@@ -63,7 +63,7 @@ function deleteDep(id) {
                 <h6>Division Id : <h6><input type="text" id="divId" class="form-control" readonly placeholder="${res.data.divisionId}" value="${res.data.divisionId}">
                 `;
         // console.log(temp);
-        $("#editDepartement").html(temp);
+        $("#deleteDepartement").html(temp);
     }).fail((err) => {
         console.log(err);
     });
@@ -91,8 +91,8 @@ function editDep(id) {
 
 function createDep() {
     $.ajax({
-        url: `https://localhost:7156/api/Departements/${id}`,
-        type: "CREATE"
+        url: `https://localhost:7156/api/Departements`,
+        type: "POST"
     }).done((res) => {
         //console.log(res.results);
         let temp = "";
@@ -103,7 +103,7 @@ function createDep() {
                 <h6>Division Id : <h6><input type="text" id="divId" class="form-control" placeholder="${res.data.divisionId}" value="${res.data.divisionId}">
                 `;
         // console.log(temp);
-        $("#editDepartement").html(temp);
+        $("#createDepartement").html(temp);
     }).fail((err) => {
         console.log(err);
     });
