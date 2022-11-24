@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "tzvOg/sLDZUyb5EF4dGErEI4XhwVQNxDfEycr6eF6tM7SHfyiJv8vNcgD8tYWCCLKLpJ/bPTB7GUwuKO6Jp4fg==",
+  "dgSpecHash": "KF2tjFqY69Nkx8bvSHcBiyPhfqpDoPC4gwqN6YIm920T8xWltfCMutxcoyNNjct9uI5PeOTIl5nIBVBDia7/zA==",
   "success": true,
   "projectFilePath": "D:\\METRODATA ACADEMY\\MCC\\Visual Studio\\WebApp\\WebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LENOVO\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\dotnet.highcharts\\4.0.0\\dotnet.highcharts.4.0.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\jquery\\1.4.4\\jquery.1.4.4.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\jquery.validation\\1.19.5\\jquery.validation.1.19.5.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
@@ -176,5 +179,16 @@
     "C:\\Users\\LENOVO\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'DotNet.Highcharts 4.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "DotNet.Highcharts",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

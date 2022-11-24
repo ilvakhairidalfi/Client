@@ -528,3 +528,4 @@ D:\METRODATA ACADEMY\MCC\Visual Studio\WebApp\obj\Debug\net6.0\refint\WebApp.dll
 D:\METRODATA ACADEMY\MCC\Visual Studio\WebApp\obj\Debug\net6.0\WebApp.pdb
 D:\METRODATA ACADEMY\MCC\Visual Studio\WebApp\obj\Debug\net6.0\WebApp.genruntimeconfig.cache
 D:\METRODATA ACADEMY\MCC\Visual Studio\WebApp\obj\Debug\net6.0\ref\WebApp.dll
+D:\METRODATA ACADEMY\MCC\Visual Studio\WebApp\bin\Debug\net6.0\DotNet.Highcharts.dll
